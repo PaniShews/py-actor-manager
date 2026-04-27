@@ -4,7 +4,6 @@ from app.models import Actor
 
 
 class ActorManager:
-
     def __init__(
             self,
             db_name: str,
@@ -15,7 +14,11 @@ class ActorManager:
         self._connection = sqlite3.connect(self.db_name)
 
 
-    def create(self, first_name: str, last_name: str) -> None:
+    def create(
+            self,
+            first_name: str,
+            last_name: str
+    ) -> None:
         self._connection.execute(
             f"INSERT INTO {self.table_name } (first_name, last_name) VALUES (?, ?)",
             (first_name, last_name)
